@@ -1,6 +1,6 @@
 ﻿using DbContext;
 using Features.Users.Models.DTOs;
-using Features.Users.Models.Queries;
+using Features.Users.ApplicationService.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace Features.Users.Services;

@@ -1,5 +1,6 @@
 using DbContext;
 using Features.Users;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace Features;
@@ -16,6 +17,7 @@ public class Program()
 
         UsersInstaller.Register(builder.Services);
 
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 
         builder.Services.AddControllers();
         //builder.Services.AddEndpointsApiExplorer();

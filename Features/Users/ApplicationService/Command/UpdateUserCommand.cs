@@ -1,12 +1,12 @@
-﻿namespace Features.Users.Models.Commands;
+﻿namespace Features.Users.ApplicationService.Command;
 
 public record UpdateUserCommand
 {
     public UpdateUserCommand()
     {
-        
+
     }
-    
+
     public long Id { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }

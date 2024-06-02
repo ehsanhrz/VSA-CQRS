@@ -1,6 +1,6 @@
 ﻿using DbContext;
 using DbContext.Entities.Users;
-using Features.Users.Models.Commands;
+using Features.Users.ApplicationService.Command;
 using Microsoft.EntityFrameworkCore;
 
 namespace Features.Users.Services;
@@ -35,6 +35,7 @@ public class UserCud
                     .SetProperty(i => i.PhoneNumber, command.PhoneNumber)
                     .SetProperty(i => i.Email, command.Email));
     }
+
     public async Task DeleteAsync(DeleteUserCommand command)
     {
         await context.Users.Where(u => u.Id == command.Id).ExecuteDeleteAsync();

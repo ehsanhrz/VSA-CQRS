@@ -2,7 +2,7 @@
 using System.Net.Http.Json;
 using System.Text;
 using Features;
-using Features.Users.Models.Commands;
+using Features.Users.ApplicationService.Command;
 using Features.Users.Models.DTOs;
 using Newtonsoft.Json;
 

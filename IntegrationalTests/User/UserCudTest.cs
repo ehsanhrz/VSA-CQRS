@@ -1,5 +1,5 @@
-﻿using Features.Users.Models.Commands;
-using Features.Users.Models.Queries;
+﻿using Features.Users.ApplicationService.Command;
+using Features.Users.ApplicationService.Queries;
 using Features.Users.Services;
 
 namespace IntegrationalTests.User;
@@ -28,10 +28,8 @@ public class UserCudTests
             Email = "string",
             PhoneNumber = "string"
         };
-        var query = new GetUserByEmailQuery()
-        {
-            Email = command.Email
-        };
+        var query = new GetUserByEmailQuery(command.Email);
+       
         
         //a
         await UserCud.CreateAsync(command);
@@ -53,10 +51,8 @@ public class UserCudTests
             Email = "string2",
             PhoneNumber = "string2"
         };
-        var query = new GetUserByEmailQuery()
-        {
-            Email = createCommand.Email
-        };
+        var query = new GetUserByEmailQuery(createCommand.Email);
+        
         
         await UserCud.CreateAsync(createCommand);
         var createOperationResult = await GetUser.GetUserByEmailAsync(query);
@@ -72,10 +68,8 @@ public class UserCudTests
             LastName = createOperationResult.LastName,
             Id = createOperationResult.Id
         };
-        var updateResultQuery = new GetUserByEmailQuery()
-        {
-            Email = newEmail
-        };
+        var updateResultQuery = new GetUserByEmailQuery(newEmail);
+        
         await UserCud.UpdateAsync(updateCommand);
         var updateOperationResult = await GetUser.GetUserByEmailAsync(updateResultQuery);
         
@@ -98,19 +92,20 @@ public class UserCudTests
             Email = "string4",
             PhoneNumber = "string4"
         };
-        var query = new GetUserByEmailQuery()
-        {
-            Email = command.Email
-        };
+        
+        var query = new GetUserByEmailQuery(command.Email);
+        
         
         await UserCud.CreateAsync(command);
         var result = await GetUser.GetUserByEmailAsync(query);
+
         //a
         var deleteCommand = new DeleteUserCommand()
         {
             Id = result.Id
         };
         await UserCud.DeleteAsync(deleteCommand);
+
         //a
         Assert.Throws<AggregateException>(() => GetUser.GetUserByEmailAsync(query).Wait());
     }
