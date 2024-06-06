@@ -37,7 +37,6 @@
       <Folder Include="SharedServices\" />
       <Folder Include="Todo\ApplicationService\QueryHandler\" />
       <Folder Include="Todo\ApplicationService\Queries\" />
-      <Folder Include="Todo\Endpoints\" />
       <Folder Include="Todo\Exceptions\" />
       <Folder Include="Todo\Models\" />
       <Folder Include="Users\Models\Contracts\" />

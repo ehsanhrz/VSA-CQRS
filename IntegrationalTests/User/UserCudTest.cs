@@ -33,7 +33,7 @@ public class UserCudTests
         
         //a
         await UserCud.CreateAsync(command);
-        var result = await GetUser.GetUserByEmailAsync(query);
+        var result = await GetUser.GetUserByEmailAsync(query.Email);
         
         //a checking two must unique value
         Assert.Equal(result.Email,command.Email);

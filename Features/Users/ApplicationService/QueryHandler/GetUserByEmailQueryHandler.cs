@@ -15,7 +15,7 @@ namespace Features.Users.ApplicationService.QueryHandler
         }
         public async Task<UserDto> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
         {
-            return await getUser.GetUserByEmailAsync(request);
+            return await getUser.GetUserByEmailAsync(request.Email);
         }
     }
 }

@@ -1,4 +1,5 @@
 using DbContext;
+using Features.Todo;
 using Features.Users;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ public class Program()
         builder.Services.AddDbContext<AppDbContext>(o => o.UseNpgsql(connectionStrings.DefaultConnection));
 
         UsersInstaller.Register(builder.Services);
+        TodoInstaller.Register(builder.Services);
 
         builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 
