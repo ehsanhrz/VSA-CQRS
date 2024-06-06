@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using DbContext.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace DbContext;
 

@@ -55,11 +55,12 @@ public class UserCudTests
         
         
         await UserCud.CreateAsync(createCommand);
-        var createOperationResult = await GetUser.GetUserByEmailAsync(query);
+        var createOperationResult = await GetUser.GetUserByEmailAsync(query.Email);
         
         //a
         const string newEmail = "string23";
         const string newPhone = "string23";
+
         var updateCommand = new UpdateUserCommand()
         {
             Email = newEmail,
@@ -71,7 +72,7 @@ public class UserCudTests
         var updateResultQuery = new GetUserByEmailQuery(newEmail);
         
         await UserCud.UpdateAsync(updateCommand);
-        var updateOperationResult = await GetUser.GetUserByEmailAsync(updateResultQuery);
+        var updateOperationResult = await GetUser.GetUserByEmailAsync(updateResultQuery.Email);
         
         //a
         Assert.Multiple(() =>
@@ -97,7 +98,7 @@ public class UserCudTests
         
         
         await UserCud.CreateAsync(command);
-        var result = await GetUser.GetUserByEmailAsync(query);
+        var result = await GetUser.GetUserByEmailAsync(query.Email);
 
         //a
         var deleteCommand = new DeleteUserCommand()
@@ -107,6 +108,6 @@ public class UserCudTests
         await UserCud.DeleteAsync(deleteCommand);
 
         //a
-        Assert.Throws<AggregateException>(() => GetUser.GetUserByEmailAsync(query).Wait());
+        Assert.Throws<AggregateException>(() => GetUser.GetUserByEmailAsync(query.Email).Wait());
     }
 }
